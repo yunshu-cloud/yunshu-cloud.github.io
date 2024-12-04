@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Random in CppWhen we want to get a random value in cpp. we could 1#include &lt;random&gt;  First,123std::random_device rd;int random_value &#x3D; rd();  This could get a random value. However it is hardwar">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/random_engine.png">
+<meta property="og:image" content="http://example.com/images/random_engine.png">
 <meta property="article:published_time" content="2024-12-04T13:45:06.000Z">
-<meta property="article:modified_time" content="2024-12-04T14:04:23.994Z">
+<meta property="article:modified_time" content="2024-12-04T14:08:34.070Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/random_engine.png">
+<meta name="twitter:image" content="http://example.com/images/random_engine.png">
   
   
   
@@ -288,7 +288,7 @@
 <p>This is the actually random value generator we want to use in the daily business.<br>It can generate pseudo-random numbers efficientl.<br>But remember, you need to seed it by your random_device like this</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::random_device rd;<br><span class="hljs-function">std::mt19937 <span class="hljs-title">engine</span><span class="hljs-params">(rd())</span></span>;<br><span class="hljs-type">int</span> random_value = <span class="hljs-built_in">engine</span>();<br></code></pre></td></tr></table></figure>
 
-<p>The running result is as follows ⬇️<br><img src="/random_engine.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>The running result is as follows ⬇️<br><img src="/images/random_engine.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h3 id="Third，"><a href="#Third，" class="headerlink" title="Third，"></a>Third，</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">std::uniform_int_distribution&lt;std::mt19937::result_type&gt; <span class="hljs-title">distribution</span><span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>)</span></span>;<br></code></pre></td></tr></table></figure>
 
 <p>This could limit the random value to a specific range, in my example is 0 to 100.<br>You need to feed it using engine which i mention above.<br>Here is an example :</p>
