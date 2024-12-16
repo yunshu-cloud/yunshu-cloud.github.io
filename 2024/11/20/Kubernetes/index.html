@@ -8,34 +8,34 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/yunshu-cloud/img/fluid.png">
-  <link rel="icon" href="/yunshu-cloud/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="WangZhiXiong">
+  <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
     <meta name="description" content="Kybernetes Explainedcontrol plane(master Node)A. kbue-api serverexpose the kubernetes api, which is used by all components to interact with the cluster validate and process api requests ,used for AAA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes">
-<meta property="og:url" content="https://github.com/yunshu-cloud/2024/11/20/Kubernetes/index.html">
-<meta property="og:site_name" content="WangZhiXiong Blog">
+<meta property="og:url" content="http://example.com/2024/11/20/Kubernetes/index.html">
+<meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Kybernetes Explainedcontrol plane(master Node)A. kbue-api serverexpose the kubernetes api, which is used by all components to interact with the cluster validate and process api requests ,used for AAA">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/images/Kubernetes.png">
+<meta property="og:image" content="http://example.com/images/Kubernetes.png">
 <meta property="article:published_time" content="2024-11-20T11:56:36.000Z">
 <meta property="article:modified_time" content="2024-11-20T12:38:27.875Z">
-<meta property="article:author" content="WangZhiXiong">
+<meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/images/Kubernetes.png">
+<meta name="twitter:image" content="http://example.com/images/Kubernetes.png">
   
   
   
-  <title>Kubernetes - WangZhiXiong Blog</title>
+  <title>Kubernetes - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
-<link  rel="stylesheet" href="/yunshu-cloud/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/yunshu-cloud/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/yunshu-cloud/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/yunshu-cloud/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/yunshu-cloud/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/yunshu-cloud/js/utils.js" ></script>
-  <script  src="/yunshu-cloud/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -98,7 +98,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/yunshu-cloud/">
+    <a class="navbar-brand" href="/">
       <strong>Fluid</strong>
     </a>
 
@@ -117,7 +117,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/yunshu-cloud/" target="_self">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>Home</span>
               </a>
@@ -129,7 +129,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/yunshu-cloud/archives/" target="_self">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>Archives</span>
               </a>
@@ -141,7 +141,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/yunshu-cloud/categories/" target="_self">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>Categories</span>
               </a>
@@ -153,7 +153,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/yunshu-cloud/tags/" target="_self">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>Tags</span>
               </a>
@@ -165,7 +165,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/yunshu-cloud/about/" target="_self">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>About</span>
               </a>
@@ -195,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/yunshu-cloud/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -288,7 +288,7 @@
 <p>Monitoring: Continuously monitors the containers and nodes for health and status updates, sending this information back to the API server</p>
 <h4 id="B-kube-proxy"><a href="#B-kube-proxy" class="headerlink" title="B. kube proxy"></a>B. kube proxy</h4><p>enable communication between nodes</p>
 <h4 id="C-pod"><a href="#C-pod" class="headerlink" title="C. pod"></a>C. pod</h4><p>contains docker-containers</p>
-<p><img src="/yunshu-cloud/../images/Kubernetes.png" srcset="/yunshu-cloud/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/../images/Kubernetes.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 
                 
               </div>
@@ -307,13 +307,13 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Kubernetes</div>
-      <div>https://github.com/yunshu-cloud/2024/11/20/Kubernetes/</div>
+      <div>http://example.com/2024/11/20/Kubernetes/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>Author</div>
-          <div>WangZhiXiong</div>
+          <div>John Doe</div>
         </div>
       
       
@@ -351,7 +351,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/yunshu-cloud/2024/12/01/HashMap/" title="HashMap">
+                      <a href="/2024/12/01/HashMap/" title="HashMap">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">HashMap</span>
                         <span class="visible-mobile">Previous</span>
@@ -361,7 +361,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/yunshu-cloud/2024/11/04/RegisterName/" title="RegisterName">
+                      <a href="/2024/11/04/RegisterName/" title="RegisterName">
                         <span class="hidden-mobile">RegisterName</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -490,8 +490,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/yunshu-cloud/js/events.js" ></script>
-<script  src="/yunshu-cloud/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -513,7 +513,7 @@
 
 
   
-    <script  src="/yunshu-cloud/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -612,7 +612,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/yunshu-cloud/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -620,7 +620,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/yunshu-cloud/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
