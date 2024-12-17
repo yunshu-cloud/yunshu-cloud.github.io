@@ -27,7 +27,7 @@
 <meta property="og:description" content="CSAPP isTMax1. Description12345678910&#x2F;* * isTmax - returns 1 if x is the maximum, two&#x27;s complement number, *     and 0 otherwise *   Legal ops: ! ~ &amp; ^ | + *   Max ops: 10 *   Rating: 1 *&#x2F;int">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-17T07:14:03.000Z">
-<meta property="article:modified_time" content="2024-12-17T08:27:27.099Z">
+<meta property="article:modified_time" content="2024-12-17T08:30:05.032Z">
 <meta property="article:author" content="WangZhiXiong">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          146 words
+          145 words
         
       </span>
     
@@ -317,7 +317,7 @@
 </blockquote>
 <h3 id="4-Explaination"><a href="#4-Explaination" class="headerlink" title="4. Explaination"></a>4. Explaination</h3><p>Basic thoughts: Considering we need to transfer a integer value x to a boolean value,<br>we could first transfer integer value to zero , then reverse zero to non-zero which could also represent true.</p>
 <p>The imitation gives us a true example.<br>First of all, we should know about what is the maximum, two’s complement number.<br>It is represented as 0 following 1 to the end.</p>
-<p>So, we first add 1 to it, which could lead to overflow, making the result to minimum integer value,<br>which is represented as 1 following 0 to the end.</p>
+<p>So, we first add 1 to it, making the result to minimum integer value,<br>which is represented as 1 following 0 to the end.</p>
 <p>And, then use maximum integer value add to minimum integer value which<br>can get -1 as result.</p>
 <p>Next, do bit operation, reversing each bit 1 to 0 , which can get 0 as result.</p>
 <p>Now, we get the result what we want.Commonly, we just need to do !x to return.</p>
