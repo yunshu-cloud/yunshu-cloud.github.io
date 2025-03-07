@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>hyperloglog</title>
+    <link href="/2025/03/07/hyperloglog/"/>
+    <url>/2025/03/07/hyperloglog/</url>
+    
+    <content type="html"><![CDATA[<h2 id="HyperLoglog"><a href="#HyperLoglog" class="headerlink" title="HyperLoglog"></a>HyperLoglog</h2><h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>With millions of users clicking on websites randomly, tracking the number of clicks can be a challenge.This is where HyperLogLog comes in to help efficiently handle the problem.</p><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>he HyperLogLog(HLL) is a probablistic data structure that tracks the cardinality of large data sets which do not have duplicates.It is used for counting unique items in a massive data stream without explicitly storing every item.</p><h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><p>Considering a simple example of how it works using the string “A great database is a great life”.</p><ul><li>First, the string is hash to produce a hash value, and then convert into binary format.</li><li>Second, extract b bits from the binary value above as register value.</li><li>Third, get the position of the leftmost 1 from the remaining set of bits.<br>Acquire the max of position and register value as the final register value.</li><li>Finally, after all the elements are added, use the formula below to get the result we want<br><img src="/images/cardinality.png" alt="formula"></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HowManyBits</title>
     <link href="/2024/12/19/HowManyBits/"/>
     <url>/2024/12/19/HowManyBits/</url>
