@@ -1,3 +1,5 @@
+http://example.com/2025/08/07/ChangeBuffer/
+http://example.com/2025/07/05/bustub-Project-1-buffer/
 http://example.com/2025/06/29/bustub/
 http://example.com/2025/06/16/CGLIB/
 http://example.com/2025/03/07/hyperloglog/
@@ -11,3 +13,8 @@ http://example.com/2024/11/20/Kubernetes/
 http://example.com/2024/11/04/RegisterName/
 http://example.com/2024/11/04/hello-world/
 http://example.com/
+http://example.com/tags/MySQL/
+http://example.com/tags/Database/
+http://example.com/tags/Performance/
+http://example.com/tags/InnoDB/
+http://example.com/categories/Database/

@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MySQL Change Buffer - Boosting Write Performance | VictorHolmes Blog</title><meta name="author" content="victor holmes"><meta name="copyright" content="victor holmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MySQL Change Buffer: A Deep DiveWhat is the Change Buffer?The Change Buffer is a special data structure in MySQL’s InnoDB storage engine that caches changes to secondary indexes when the affected inde">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL Change Buffer - Boosting Write Performance">
+<meta property="og:url" content="http://example.com/2025/08/07/ChangeBuffer/index.html">
+<meta property="og:site_name" content="VictorHolmes Blog">
+<meta property="og:description" content="MySQL Change Buffer: A Deep DiveWhat is the Change Buffer?The Change Buffer is a special data structure in MySQL’s InnoDB storage engine that caches changes to secondary indexes when the affected inde">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-08-07T06:09:07.000Z">
+<meta property="article:modified_time" content="2025-08-07T06:10:48.207Z">
+<meta property="article:author" content="victor holmes">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Database">
+<meta property="article:tag" content="Performance">
+<meta property="article:tag" content="InnoDB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MySQL Change Buffer - Boosting Write Performance",
+  "url": "http://example.com/2025/08/07/ChangeBuffer/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2025-08-07T06:09:07.000Z",
+  "dateModified": "2025-08-07T06:10:48.207Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "victor holmes",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/08/07/ChangeBuffer/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL Change Buffer - Boosting Write Performance',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="VictorHolmes Blog" type="application/atom+xml">
+</head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">VictorHolmes Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">MySQL Change Buffer - Boosting Write Performance</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">MySQL Change Buffer - Boosting Write Performance</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-08-07T06:09:07.000Z" title="Created 2025-08-07 14:09:07">2025-08-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-08-07T06:10:48.207Z" title="Updated 2025-08-07 14:10:48">2025-08-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Database/">Database</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="MySQL-Change-Buffer-A-Deep-Dive"><a href="#MySQL-Change-Buffer-A-Deep-Dive" class="headerlink" title="MySQL Change Buffer: A Deep Dive"></a>MySQL Change Buffer: A Deep Dive</h1><h2 id="What-is-the-Change-Buffer"><a href="#What-is-the-Change-Buffer" class="headerlink" title="What is the Change Buffer?"></a>What is the Change Buffer?</h2><p>The Change Buffer is a special data structure in MySQL’s InnoDB storage engine that caches changes to secondary indexes when the affected index pages are not in the buffer pool. Instead of immediately reading the required page from disk, which would be expensive, InnoDB stores these changes in the change buffer, deferring the actual modifications until the page is loaded into memory by another operation.</p>
+<h2 id="How-Change-Buffer-Works"><a href="#How-Change-Buffer-Works" class="headerlink" title="How Change Buffer Works"></a>How Change Buffer Works</h2><p>When you modify data that affects secondary indexes (through INSERT, UPDATE, or DELETE operations), InnoDB checks if the relevant index pages are already in the buffer pool:</p>
+<ol>
+<li><strong>If the page is in memory</strong>: InnoDB applies the changes directly to the index page in the buffer pool.</li>
+<li><strong>If the page is not in memory</strong>: Instead of reading it from disk immediately, InnoDB stores the intended modification in the change buffer.</li>
+</ol>
+<p>Later, when the page is eventually read into the buffer pool by some other operation, the buffered changes are merged with the page in a process called “change buffer merge.”</p>
+<h2 id="Types-of-Operations-That-Can-Be-Buffered"><a href="#Types-of-Operations-That-Can-Be-Buffered" class="headerlink" title="Types of Operations That Can Be Buffered"></a>Types of Operations That Can Be Buffered</h2><p>The change buffer can store these operations:</p>
+<ul>
+<li><strong>INSERT</strong>: New index entries</li>
+<li><strong>DELETE</strong>: Marking index records for deletion</li>
+<li><strong>UPDATE</strong>: Handled as DELETE + INSERT operations</li>
+</ul>
+<p>Note that only changes to secondary indexes can be buffered. Primary key changes are always processed immediately.</p>
+<h2 id="Benefits-of-the-Change-Buffer"><a href="#Benefits-of-the-Change-Buffer" class="headerlink" title="Benefits of the Change Buffer"></a>Benefits of the Change Buffer</h2><ol>
+<li><strong>Improved Write Performance</strong>: By avoiding immediate disk reads for secondary index updates, write operations complete faster.</li>
+<li><strong>Reduced I&#x2F;O Operations</strong>: Multiple changes to the same index page can be merged in a single operation.</li>
+<li><strong>Better Throughput</strong>: The system can handle more write operations per second.</li>
+<li><strong>Batch Processing</strong>: Changes are applied in batches, which is more efficient than individual operations.</li>
+</ol>
+<h2 id="When-Change-Buffer-is-Most-Effective"><a href="#When-Change-Buffer-is-Most-Effective" class="headerlink" title="When Change Buffer is Most Effective"></a>When Change Buffer is Most Effective</h2><p>The change buffer provides the greatest benefit in these scenarios:</p>
+<ul>
+<li><strong>Random Insertions</strong>: When inserting data randomly distributed across the table</li>
+<li><strong>Bulk Loading</strong>: When loading large amounts of data into a table with secondary indexes</li>
+<li><strong>Low Buffer Pool Hit Ratio</strong>: When a significant portion of the working set doesn’t fit in memory</li>
+<li><strong>Many Secondary Indexes</strong>: Tables with numerous secondary indexes benefit more</li>
+</ul>
+<h2 id="Configuration-Options"><a href="#Configuration-Options" class="headerlink" title="Configuration Options"></a>Configuration Options</h2><p>MySQL provides several variables to configure change buffer behavior:</p>
+<h3 id="innodb-change-buffering"><a href="#innodb-change-buffering" class="headerlink" title="innodb_change_buffering"></a><code>innodb_change_buffering</code></h3><p>Controls which operations are buffered:</p>
+<ul>
+<li><code>all</code>: Buffer inserts, deletes, and purges (default)</li>
+<li><code>none</code>: Disable change buffering</li>
+<li><code>inserts</code>: Buffer insert operations only</li>
+<li><code>deletes</code>: Buffer delete operations only</li>
+<li><code>changes</code>: Buffer both inserts and deletes</li>
+<li><code>purges</code>: Buffer physical deletion operations that happen in the background</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> innodb_change_buffering <span class="operator">=</span> <span class="string">&#x27;all&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="innodb-change-buffer-max-size"><a href="#innodb-change-buffer-max-size" class="headerlink" title="innodb_change_buffer_max_size"></a><code>innodb_change_buffer_max_size</code></h3><p>Controls the maximum size of the change buffer as a percentage of the total buffer pool size (0-50):</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> innodb_change_buffer_max_size <span class="operator">=</span> <span class="number">25</span>; <span class="comment">-- 25% of buffer pool</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Monitoring-the-Change-Buffer"><a href="#Monitoring-the-Change-Buffer" class="headerlink" title="Monitoring the Change Buffer"></a>Monitoring the Change Buffer</h2><p>You can monitor change buffer activity using:</p>
+<h3 id="Information-Schema-Tables"><a href="#Information-Schema-Tables" class="headerlink" title="Information Schema Tables"></a>Information Schema Tables</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> information_schema.INNODB_METRICS</span><br><span class="line"><span class="keyword">WHERE</span> NAME <span class="keyword">LIKE</span> <span class="string">&#x27;%ibuf%&#x27;</span> <span class="keyword">AND</span> STATUS<span class="operator">=</span><span class="string">&#x27;enabled&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Performance-Schema"><a href="#Performance-Schema" class="headerlink" title="Performance Schema"></a>Performance Schema</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EVENT_NAME, COUNT_STAR, SUM_TIMER_WAIT</span><br><span class="line"><span class="keyword">FROM</span> performance_schema.events_waits_summary_global_by_event_name</span><br><span class="line"><span class="keyword">WHERE</span> EVENT_NAME <span class="keyword">LIKE</span> <span class="string">&#x27;%ibuf%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SHOW-ENGINE-INNODB-STATUS"><a href="#SHOW-ENGINE-INNODB-STATUS" class="headerlink" title="SHOW ENGINE INNODB STATUS"></a>SHOW ENGINE INNODB STATUS</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> ENGINE INNODB STATUS;</span><br></pre></td></tr></table></figure>
+
+<p>Look for the “INSERT BUFFER AND ADAPTIVE HASH INDEX” section, which provides statistics about change buffer usage.</p>
+<h2 id="Potential-Drawbacks"><a href="#Potential-Drawbacks" class="headerlink" title="Potential Drawbacks"></a>Potential Drawbacks</h2><p>While the change buffer improves write performance, it comes with some trade-offs:</p>
+<ol>
+<li><strong>Delayed Consistency</strong>: Secondary indexes may not reflect the latest changes immediately.</li>
+<li><strong>Memory Usage</strong>: The change buffer consumes part of the buffer pool.</li>
+<li><strong>Merge Overhead</strong>: When a page is loaded, merging buffered changes adds some overhead.</li>
+<li><strong>Recovery Time</strong>: A large change buffer may increase recovery time after a crash.</li>
+</ol>
+<h2 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h2><ol>
+<li><p><strong>Size Appropriately</strong>: Set <code>innodb_change_buffer_max_size</code> based on your workload. Write-heavy applications with many secondary indexes benefit from larger settings.</p>
+</li>
+<li><p><strong>Monitor Buffer Efficiency</strong>: Track the change buffer hit rate and merge operations to ensure it’s providing benefits.</p>
+</li>
+<li><p><strong>Consider Disabling for Real-Time Applications</strong>: If your application requires immediate consistency of all indexes, you might want to disable change buffering.</p>
+</li>
+<li><p><strong>Periodic Merging</strong>: For write-intensive workloads with few reads, consider periodically forcing change buffer merges during low-activity periods:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> innodb_buffer_pool_dump_now <span class="operator">=</span> <span class="keyword">ON</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Buffer Pool Size</strong>: Ensure your buffer pool is adequately sized. A too-small buffer pool can lead to premature eviction of pages with pending change buffer entries.</p>
+</li>
+</ol>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The MySQL change buffer is a powerful optimization technique that can significantly improve write performance, especially for workloads with heavy random inserts or updates to tables with multiple secondary indexes. By understanding how it works and configuring it appropriately for your workload, you can achieve better database performance without sacrificing data integrity.</p>
+<p>Remember that the change buffer is most effective when your working set doesn’t fit entirely in memory. If your entire dataset fits in the buffer pool, the change buffer provides little benefit as most index pages will already be in memory.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">victor holmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/08/07/ChangeBuffer/">http://example.com/2025/08/07/ChangeBuffer/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/Database/">Database</a><a class="post-meta__tags" href="/tags/Performance/">Performance</a><a class="post-meta__tags" href="/tags/InnoDB/">InnoDB</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/07/05/bustub-Project-1-buffer/" title="bustub -- Project 1 buffer"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">bustub -- Project 1 buffer</div></div><div class="info-2"><div class="info-item-1">LRU replacer  BackgroundThe Least recently used cache is a cache replacement policy used in computing to manage how data is stored in the cache.When the cache is full and new data need to be stored, a decision must be madde about which old data to remove.This is where the LRU algorithm comes into play. ThoughtThe LRU cache policy works on the principle that data items that have not been used recently are likey to be used less in the future.Therefore, when the cache is full and a new item...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">victor holmes</div><div class="author-info-description">Hei guys, Welcome to my Blog :)</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL-Change-Buffer-A-Deep-Dive"><span class="toc-number">1.</span> <span class="toc-text">MySQL Change Buffer: A Deep Dive</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-the-Change-Buffer"><span class="toc-number">1.1.</span> <span class="toc-text">What is the Change Buffer?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-Change-Buffer-Works"><span class="toc-number">1.2.</span> <span class="toc-text">How Change Buffer Works</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Types-of-Operations-That-Can-Be-Buffered"><span class="toc-number">1.3.</span> <span class="toc-text">Types of Operations That Can Be Buffered</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Benefits-of-the-Change-Buffer"><span class="toc-number">1.4.</span> <span class="toc-text">Benefits of the Change Buffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#When-Change-Buffer-is-Most-Effective"><span class="toc-number">1.5.</span> <span class="toc-text">When Change Buffer is Most Effective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration-Options"><span class="toc-number">1.6.</span> <span class="toc-text">Configuration Options</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#innodb-change-buffering"><span class="toc-number">1.6.1.</span> <span class="toc-text">innodb_change_buffering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#innodb-change-buffer-max-size"><span class="toc-number">1.6.2.</span> <span class="toc-text">innodb_change_buffer_max_size</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monitoring-the-Change-Buffer"><span class="toc-number">1.7.</span> <span class="toc-text">Monitoring the Change Buffer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Information-Schema-Tables"><span class="toc-number">1.7.1.</span> <span class="toc-text">Information Schema Tables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Performance-Schema"><span class="toc-number">1.7.2.</span> <span class="toc-text">Performance Schema</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SHOW-ENGINE-INNODB-STATUS"><span class="toc-number">1.7.3.</span> <span class="toc-text">SHOW ENGINE INNODB STATUS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Potential-Drawbacks"><span class="toc-number">1.8.</span> <span class="toc-text">Potential Drawbacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Best-Practices"><span class="toc-number">1.9.</span> <span class="toc-text">Best Practices</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">1.10.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/07/ChangeBuffer/" title="MySQL Change Buffer - Boosting Write Performance">MySQL Change Buffer - Boosting Write Performance</a><time datetime="2025-08-07T06:09:07.000Z" title="Created 2025-08-07 14:09:07">2025-08-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/05/bustub-Project-1-buffer/" title="bustub -- Project 1 buffer">bustub -- Project 1 buffer</a><time datetime="2025-07-05T06:37:55.000Z" title="Created 2025-07-05 14:37:55">2025-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/29/bustub/" title="bustub">bustub</a><time datetime="2025-06-29T06:06:55.000Z" title="Created 2025-06-29 14:06:55">2025-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/CGLIB/" title="CGLIB">CGLIB</a><time datetime="2025-06-16T06:32:40.000Z" title="Created 2025-06-16 14:32:40">2025-06-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/07/hyperloglog/" title="hyperloglog">hyperloglog</a><time datetime="2025-03-07T08:25:15.000Z" title="Created 2025-03-07 16:25:15">2025-03-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By victor holmes</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
