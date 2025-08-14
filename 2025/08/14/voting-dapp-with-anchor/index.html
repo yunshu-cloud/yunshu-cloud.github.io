@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>voting-dapp with anchor | VictorHolmes Blog</title><meta name="author" content="victor holmes"><meta name="copyright" content="victor holmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Building a Solana Voting DApp with Anchor: A Complete Step-by-Step GuideBuilding decentralized applications (dApps) on Solana has become increasingly popular due to the blockchain’s high performance a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="voting-dapp with anchor">
+<meta property="og:url" content="http://example.com/2025/08/14/voting-dapp-with-anchor/index.html">
+<meta property="og:site_name" content="VictorHolmes Blog">
+<meta property="og:description" content="Building a Solana Voting DApp with Anchor: A Complete Step-by-Step GuideBuilding decentralized applications (dApps) on Solana has become increasingly popular due to the blockchain’s high performance a">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-08-14T06:47:42.000Z">
+<meta property="article:modified_time" content="2025-08-14T06:47:48.663Z">
+<meta property="article:author" content="victor holmes">
+<meta property="article:tag" content="test">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "voting-dapp with anchor",
+  "url": "http://example.com/2025/08/14/voting-dapp-with-anchor/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2025-08-14T06:47:42.000Z",
+  "dateModified": "2025-08-14T06:47:48.663Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "victor holmes",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/08/14/voting-dapp-with-anchor/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'voting-dapp with anchor',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="VictorHolmes Blog" type="application/atom+xml">
+</head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">VictorHolmes Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">voting-dapp with anchor</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">voting-dapp with anchor</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-08-14T06:47:42.000Z" title="Created 2025-08-14 14:47:42">2025-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-08-14T06:47:48.663Z" title="Updated 2025-08-14 14:47:48">2025-08-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Building-a-Solana-Voting-DApp-with-Anchor-A-Complete-Step-by-Step-Guide"><a href="#Building-a-Solana-Voting-DApp-with-Anchor-A-Complete-Step-by-Step-Guide" class="headerlink" title="Building a Solana Voting DApp with Anchor: A Complete Step-by-Step Guide"></a>Building a Solana Voting DApp with Anchor: A Complete Step-by-Step Guide</h1><p>Building decentralized applications (dApps) on Solana has become increasingly popular due to the blockchain’s high performance and low transaction costs. In this comprehensive guide, we’ll walk through creating a complete voting dApp using the Anchor framework - from setting up your development environment to deploying and testing your smart contract.</p>
+<h2 id="What-We’ll-Build"><a href="#What-We’ll-Build" class="headerlink" title="What We’ll Build"></a>What We’ll Build</h2><p>Our voting dApp will allow users to:</p>
+<ul>
+<li>Create polls with custom descriptions and time limits</li>
+<li>Add candidates to existing polls</li>
+<li>Cast votes for their preferred candidates</li>
+<li>Enforce voting time windows (polls have start and end times)</li>
+<li>Track vote counts in real-time</li>
+</ul>
+<h2 id="Phase-1-Environment-Setup"><a href="#Phase-1-Environment-Setup" class="headerlink" title="Phase 1: Environment Setup"></a>Phase 1: Environment Setup</h2><h3 id="Prerequisites-Installation"><a href="#Prerequisites-Installation" class="headerlink" title="Prerequisites Installation"></a>Prerequisites Installation</h3><p>First, let’s install all the necessary tools:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install Rust</span></span><br><span class="line">curl --proto <span class="string">&#x27;=https&#x27;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br><span class="line"><span class="built_in">source</span> ~/.cargo/env</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install Solana CLI</span></span><br><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -sSfL https://release.solana.com/v1.16.0/install)</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;~/.local/share/solana/install/active_release/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Install Node.js and Yarn</span></span><br><span class="line">npm install -g yarn</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install Anchor Version Manager (AVM)</span></span><br><span class="line">cargo install --git https://github.com/coral-xyz/anchor avm --locked --force</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install and use latest Anchor</span></span><br><span class="line">avm install latest</span><br><span class="line">avm use latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solana-Configuration"><a href="#Solana-Configuration" class="headerlink" title="Solana Configuration"></a>Solana Configuration</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configure Solana for development</span></span><br><span class="line">solana config <span class="built_in">set</span> --url devnet</span><br><span class="line">solana-keygen new  <span class="comment"># Generate a new keypair</span></span><br><span class="line">solana config get  <span class="comment"># Verify configuration</span></span><br><span class="line">solana airdrop 2   <span class="comment"># Get some SOL for testing</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Phase-2-Project-Initialization"><a href="#Phase-2-Project-Initialization" class="headerlink" title="Phase 2: Project Initialization"></a>Phase 2: Project Initialization</h2><h3 id="Creating-the-Anchor-Project"><a href="#Creating-the-Anchor-Project" class="headerlink" title="Creating the Anchor Project"></a>Creating the Anchor Project</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Initialize new Anchor project</span></span><br><span class="line">anchor init voting-dapp</span><br><span class="line"><span class="built_in">cd</span> voting-dapp</span><br></pre></td></tr></table></figure>
+
+<p>This creates a structured project with:</p>
+<ul>
+<li><code>programs/voting-dapp/src/lib.rs</code> - Our smart contract</li>
+<li><code>tests/</code> - Test files</li>
+<li><code>Anchor.toml</code> - Project configuration</li>
+<li><code>target/</code> - Build artifacts</li>
+</ul>
+<h2 id="Phase-3-Smart-Contract-Development"><a href="#Phase-3-Smart-Contract-Development" class="headerlink" title="Phase 3: Smart Contract Development"></a>Phase 3: Smart Contract Development</h2><h3 id="Designing-the-Program-Architecture"><a href="#Designing-the-Program-Architecture" class="headerlink" title="Designing the Program Architecture"></a>Designing the Program Architecture</h3><p>Our smart contract needs three main components:</p>
+<ol>
+<li><strong>Data Structures</strong>: <code>Poll</code> and <code>Candidate</code> accounts</li>
+<li><strong>Instructions</strong>: <code>initialize_poll</code>, <code>initialize_candidate</code>, <code>vote</code></li>
+<li><strong>Error Handling</strong>: Custom errors for timing validation</li>
+</ol>
+<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p>Here’s our complete program code in <code>programs/voting-dapp/src/lib.rs</code>:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> anchor_lang::prelude::*;</span><br><span class="line"></span><br><span class="line">declare_id!(<span class="string">&quot;6ZVQpsP3FSWP1PgKt286gtC5yJzNnEvMYo67xJWe579G&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">#[program]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">mod</span> voting_dapp &#123;</span><br><span class="line">    <span class="keyword">use</span> super::*;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">initialize_poll</span>(</span><br><span class="line">        ctx: Context&lt;InitializePoll&gt;,</span><br><span class="line">        poll_id: <span class="type">u64</span>,</span><br><span class="line">        description: <span class="type">String</span>,</span><br><span class="line">        poll_start: <span class="type">i64</span>,</span><br><span class="line">        poll_end: <span class="type">i64</span>,</span><br><span class="line">    ) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;()&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">poll</span> = &amp;<span class="keyword">mut</span> ctx.accounts.poll;</span><br><span class="line">        poll.poll_id = poll_id;</span><br><span class="line">        poll.description = description;</span><br><span class="line">        poll.poll_start = poll_start;</span><br><span class="line">        poll.poll_end = poll_end;</span><br><span class="line">        poll.candidate_amount = <span class="number">0</span>;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">initialize_candidate</span>(</span><br><span class="line">        ctx: Context&lt;InitializeCandidate&gt;,</span><br><span class="line">        candidate_name: <span class="type">String</span>,</span><br><span class="line">        _poll_id: <span class="type">u64</span>,</span><br><span class="line">    ) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;()&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">candidate</span> = &amp;<span class="keyword">mut</span> ctx.accounts.candidate;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">poll</span> = &amp;<span class="keyword">mut</span> ctx.accounts.poll;</span><br><span class="line"></span><br><span class="line">        candidate.candidate_name = candidate_name;</span><br><span class="line">        candidate.candidate_votes = <span class="number">0</span>;</span><br><span class="line">        poll.candidate_amount += <span class="number">1</span>;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">vote</span>(ctx: Context&lt;Vote&gt;, _candidate_name: <span class="type">String</span>, _poll_id: <span class="type">u64</span>) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;()&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">candidate</span> = &amp;<span class="keyword">mut</span> ctx.accounts.candidate;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">clock</span> = Clock::<span class="title function_ invoke__">get</span>()?;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> clock.unix_timestamp &lt; ctx.accounts.poll.poll_start &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_ invoke__">Err</span>(VotingError::VotingNotStarted.<span class="title function_ invoke__">into</span>());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> clock.unix_timestamp &gt; ctx.accounts.poll.poll_end &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_ invoke__">Err</span>(VotingError::VotingEnded.<span class="title function_ invoke__">into</span>());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        candidate.candidate_votes += <span class="number">1</span>;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[account]</span></span><br><span class="line"><span class="meta">#[derive(InitSpace)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Poll</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> poll_id: <span class="type">u64</span>,</span><br><span class="line">    <span class="meta">#[max_len(280)]</span></span><br><span class="line">    <span class="keyword">pub</span> description: <span class="type">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> poll_start: <span class="type">i64</span>,</span><br><span class="line">    <span class="keyword">pub</span> poll_end: <span class="type">i64</span>,</span><br><span class="line">    <span class="keyword">pub</span> candidate_amount: <span class="type">u64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[account]</span></span><br><span class="line"><span class="meta">#[derive(InitSpace)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Candidate</span> &#123;</span><br><span class="line">    <span class="meta">#[max_len(50)]</span></span><br><span class="line">    <span class="keyword">pub</span> candidate_name: <span class="type">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> candidate_votes: <span class="type">u64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[error_code]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">enum</span> <span class="title class_">VotingError</span> &#123;</span><br><span class="line">    <span class="meta">#[msg(<span class="string">&quot;Voting has not started yet&quot;</span>)]</span></span><br><span class="line">    VotingNotStarted,</span><br><span class="line">    <span class="meta">#[msg(<span class="string">&quot;Voting has ended&quot;</span>)]</span></span><br><span class="line">    VotingEnded,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Key-Features-Explained"><a href="#Key-Features-Explained" class="headerlink" title="Key Features Explained"></a>Key Features Explained</h3><p><strong>Program Derived Addresses (PDAs)</strong>: We use PDAs to create deterministic account addresses based on poll IDs and candidate names. This ensures each poll and candidate has a unique, predictable address.</p>
+<p><strong>Time-based Validation</strong>: The <code>vote</code> instruction checks the current blockchain time against the poll’s start and end times, ensuring votes can only be cast during the active voting period.</p>
+<p><strong>Account Space Calculation</strong>: Using <code>#[derive(InitSpace)]</code> automatically calculates the required space for accounts, preventing allocation errors.</p>
+<h2 id="Phase-4-Building-and-Deployment"><a href="#Phase-4-Building-and-Deployment" class="headerlink" title="Phase 4: Building and Deployment"></a>Phase 4: Building and Deployment</h2><h3 id="Initial-Build-and-Fixes"><a href="#Initial-Build-and-Fixes" class="headerlink" title="Initial Build and Fixes"></a>Initial Build and Fixes</h3><p>Our first build attempt revealed type mismatches:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anchor build</span><br></pre></td></tr></table></figure>
+
+<p><strong>Error</strong>: Clock.unix_timestamp (i64) vs poll times (u64)</p>
+<p><strong>Solution</strong>: Changed poll_start and poll_end to i64 in both the instruction parameters and the Poll struct.</p>
+<h3 id="Program-ID-Management"><a href="#Program-ID-Management" class="headerlink" title="Program ID Management"></a>Program ID Management</h3><p>After building, we needed to update the program ID in two places:</p>
+<ol>
+<li>The <code>declare_id!</code> macro in our Rust code</li>
+<li>The <code>Anchor.toml</code> configuration file</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get the generated program ID</span></span><br><span class="line">solana address -k target/deploy/voting_dapp-keypair.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start local validator</span></span><br><span class="line">solana-test-validator</span><br><span class="line"></span><br><span class="line"><span class="comment"># Deploy the program</span></span><br><span class="line">anchor deploy</span><br></pre></td></tr></table></figure>
+
+<p><strong>Success Output</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Program Id: 6ZVQpsP3FSWP1PgKt286gtC5yJzNnEvMYo67xJWe579G</span><br><span class="line">Deploy success</span><br></pre></td></tr></table></figure>
+
+<h2 id="Phase-5-Testing-and-Debugging"><a href="#Phase-5-Testing-and-Debugging" class="headerlink" title="Phase 5: Testing and Debugging"></a>Phase 5: Testing and Debugging</h2><h3 id="Initial-Testing-Challenges"><a href="#Initial-Testing-Challenges" class="headerlink" title="Initial Testing Challenges"></a>Initial Testing Challenges</h3><p>Our first test attempts revealed several issues:</p>
+<ol>
+<li><strong>Program ID Mismatch</strong>: Fixed by updating the declared ID to match the deployed program</li>
+<li><strong>Account Collisions</strong>: Solved by using random poll IDs for each test run</li>
+<li><strong>Timing Issues</strong>: Resolved by using Solana’s blockchain time instead of JavaScript timestamps</li>
+</ol>
+<h3 id="Final-Working-Test-Suite"><a href="#Final-Working-Test-Suite" class="headerlink" title="Final Working Test Suite"></a>Final Working Test Suite</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">describe</span>(<span class="string">&quot;voting-dapp&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> provider = anchor.<span class="property">AnchorProvider</span>.<span class="title function_">env</span>();</span><br><span class="line">  anchor.<span class="title function_">setProvider</span>(provider);</span><br><span class="line">  <span class="keyword">const</span> program = anchor.<span class="property">workspace</span>.<span class="property">VotingDapp</span> <span class="keyword">as</span> <span class="title class_">Program</span>&lt;<span class="title class_">VotingDapp</span>&gt;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> pollId = <span class="keyword">new</span> anchor.<span class="title function_">BN</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">1000000</span>));</span><br><span class="line"></span><br><span class="line">  <span class="title function_">it</span>(<span class="string">&quot;Initialize a poll&quot;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> slot = <span class="keyword">await</span> provider.<span class="property">connection</span>.<span class="title function_">getSlot</span>();</span><br><span class="line">    <span class="keyword">const</span> timestamp = <span class="keyword">await</span> provider.<span class="property">connection</span>.<span class="title function_">getBlockTime</span>(slot);</span><br><span class="line">    <span class="keyword">const</span> now = timestamp || <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() / <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> pollStart = <span class="keyword">new</span> anchor.<span class="title function_">BN</span>(now - <span class="number">300</span>); <span class="comment">// 5 minutes ago</span></span><br><span class="line">    <span class="keyword">const</span> pollEnd = <span class="keyword">new</span> anchor.<span class="title function_">BN</span>(now + <span class="number">7200</span>); <span class="comment">// 2 hours from now</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> program.<span class="property">methods</span></span><br><span class="line">      .<span class="title function_">initializePoll</span>(pollId, <span class="string">&quot;Test Poll&quot;</span>, pollStart, pollEnd)</span><br><span class="line">      .<span class="title function_">accounts</span>(&#123;</span><br><span class="line">        <span class="attr">signer</span>: provider.<span class="property">wallet</span>.<span class="property">publicKey</span>,</span><br><span class="line">        <span class="attr">poll</span>: pollPda,</span><br><span class="line">        <span class="attr">systemProgram</span>: anchor.<span class="property">web3</span>.<span class="property">SystemProgram</span>.<span class="property">programId</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">rpc</span>();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Additional tests for candidates and voting...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Final Test Results</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">✔ Initialize a poll (150ms)</span><br><span class="line">✔ Initialize a candidate (476ms)</span><br><span class="line">✔ Vote for a candidate (455ms)</span><br><span class="line">✔ Vote multiple times (474ms)</span><br><span class="line">✔ Initialize another candidate (473ms)</span><br><span class="line"></span><br><span class="line">5 passing (2s)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Key-Lessons-Learned"><a href="#Key-Lessons-Learned" class="headerlink" title="Key Lessons Learned"></a>Key Lessons Learned</h2><h3 id="1-Type-Consistency-Matters"><a href="#1-Type-Consistency-Matters" class="headerlink" title="1. Type Consistency Matters"></a>1. Type Consistency Matters</h3><p>Solana’s Clock returns i64 timestamps, so all time-related fields should use i64 for consistency.</p>
+<h3 id="2-Program-ID-Synchronization"><a href="#2-Program-ID-Synchronization" class="headerlink" title="2. Program ID Synchronization"></a>2. Program ID Synchronization</h3><p>Always ensure your declared program ID matches the deployed program ID across all files.</p>
+<h3 id="3-Account-Uniqueness"><a href="#3-Account-Uniqueness" class="headerlink" title="3. Account Uniqueness"></a>3. Account Uniqueness</h3><p>Use unique identifiers (like random numbers or timestamps) in tests to avoid account collision errors.</p>
+<h3 id="4-Blockchain-vs-System-Time"><a href="#4-Blockchain-vs-System-Time" class="headerlink" title="4. Blockchain vs System Time"></a>4. Blockchain vs System Time</h3><p>When working with time-sensitive operations, always use blockchain time rather than system time for consistency.</p>
+<h2 id="Next-Steps-Frontend-Development"><a href="#Next-Steps-Frontend-Development" class="headerlink" title="Next Steps: Frontend Development"></a>Next Steps: Frontend Development</h2><p>With our smart contract tested and deployed, the next phase involves:</p>
+<ol>
+<li>Setting up a React frontend with TypeScript</li>
+<li>Integrating Solana wallet adapters</li>
+<li>Creating user interfaces for poll creation and voting</li>
+<li>Connecting the frontend to our deployed program</li>
+</ol>
+<h2 id="Technical-Architecture-Summary"><a href="#Technical-Architecture-Summary" class="headerlink" title="Technical Architecture Summary"></a>Technical Architecture Summary</h2><p>Our dApp demonstrates several important Solana development patterns:</p>
+<ul>
+<li><strong>Account-based Architecture</strong>: Each poll and candidate is stored in separate accounts</li>
+<li><strong>Program Derived Addresses</strong>: Deterministic account generation</li>
+<li><strong>Time-based Logic</strong>: Using Solana’s Clock for validation</li>
+<li><strong>Error Handling</strong>: Custom error types for better user experience</li>
+<li><strong>Space Optimization</strong>: Efficient account space allocation</li>
+</ul>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Building a voting dApp on Solana with Anchor showcases the power of the ecosystem for creating decentralized applications. The combination of Rust’s safety, Anchor’s developer-friendly abstractions, and Solana’s performance creates an excellent foundation for dApp development.</p>
+<p>The journey from initial setup to working smart contract involved overcoming various challenges - from environment configuration to type mismatches and timing issues. Each obstacle provided valuable learning opportunities that deepen understanding of blockchain development.</p>
+<p>Our voting dApp now provides a solid foundation that can be extended with features like:</p>
+<ul>
+<li>Multi-choice polls</li>
+<li>Weighted voting</li>
+<li>Anonymous voting mechanisms</li>
+<li>Result visualization</li>
+<li>Mobile-responsive frontend</li>
+</ul>
+<p>The complete source code and deployment guide demonstrate that building sophisticated dApps on Solana is accessible to developers with the right tools and approach. Whether you’re building voting systems, DAOs, or other governance applications, these patterns and techniques provide a strong starting point.</p>
+<p><em>Ready to build your own Solana dApp? Start with the Anchor framework and let this guide be your roadmap to blockchain development success!</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">victor holmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/08/14/voting-dapp-with-anchor/">http://example.com/2025/08/14/voting-dapp-with-anchor/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/08/07/ChangeBuffer/" title="MySQL Change Buffer - Boosting Write Performance"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">MySQL Change Buffer - Boosting Write Performance</div></div><div class="info-2"><div class="info-item-1">MySQL Change Buffer: A Deep DiveWhat is the Change Buffer?The Change Buffer is a special data structure in MySQL’s InnoDB storage engine that caches changes to secondary indexes when the affected index pages are not in the buffer pool. Instead of immediately reading the required page from disk, which would be expensive, InnoDB stores these changes in the change buffer, deferring the actual modifications until the page is loaded into memory by another operation. How Change Buffer WorksWhen...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">victor holmes</div><div class="author-info-description">Hei guys, Welcome to my Blog :)</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Building-a-Solana-Voting-DApp-with-Anchor-A-Complete-Step-by-Step-Guide"><span class="toc-number">1.</span> <span class="toc-text">Building a Solana Voting DApp with Anchor: A Complete Step-by-Step Guide</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-We%E2%80%99ll-Build"><span class="toc-number">1.1.</span> <span class="toc-text">What We’ll Build</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Phase-1-Environment-Setup"><span class="toc-number">1.2.</span> <span class="toc-text">Phase 1: Environment Setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prerequisites-Installation"><span class="toc-number">1.2.1.</span> <span class="toc-text">Prerequisites Installation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solana-Configuration"><span class="toc-number">1.2.2.</span> <span class="toc-text">Solana Configuration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Phase-2-Project-Initialization"><span class="toc-number">1.3.</span> <span class="toc-text">Phase 2: Project Initialization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-the-Anchor-Project"><span class="toc-number">1.3.1.</span> <span class="toc-text">Creating the Anchor Project</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Phase-3-Smart-Contract-Development"><span class="toc-number">1.4.</span> <span class="toc-text">Phase 3: Smart Contract Development</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Designing-the-Program-Architecture"><span class="toc-number">1.4.1.</span> <span class="toc-text">Designing the Program Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation"><span class="toc-number">1.4.2.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Features-Explained"><span class="toc-number">1.4.3.</span> <span class="toc-text">Key Features Explained</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Phase-4-Building-and-Deployment"><span class="toc-number">1.5.</span> <span class="toc-text">Phase 4: Building and Deployment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Initial-Build-and-Fixes"><span class="toc-number">1.5.1.</span> <span class="toc-text">Initial Build and Fixes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Program-ID-Management"><span class="toc-number">1.5.2.</span> <span class="toc-text">Program ID Management</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment"><span class="toc-number">1.5.3.</span> <span class="toc-text">Deployment</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Phase-5-Testing-and-Debugging"><span class="toc-number">1.6.</span> <span class="toc-text">Phase 5: Testing and Debugging</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Initial-Testing-Challenges"><span class="toc-number">1.6.1.</span> <span class="toc-text">Initial Testing Challenges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Final-Working-Test-Suite"><span class="toc-number">1.6.2.</span> <span class="toc-text">Final Working Test Suite</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Key-Lessons-Learned"><span class="toc-number">1.7.</span> <span class="toc-text">Key Lessons Learned</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Type-Consistency-Matters"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. Type Consistency Matters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Program-ID-Synchronization"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. Program ID Synchronization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Account-Uniqueness"><span class="toc-number">1.7.3.</span> <span class="toc-text">3. Account Uniqueness</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Blockchain-vs-System-Time"><span class="toc-number">1.7.4.</span> <span class="toc-text">4. Blockchain vs System Time</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next-Steps-Frontend-Development"><span class="toc-number">1.8.</span> <span class="toc-text">Next Steps: Frontend Development</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Technical-Architecture-Summary"><span class="toc-number">1.9.</span> <span class="toc-text">Technical Architecture Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">1.10.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/14/voting-dapp-with-anchor/" title="voting-dapp with anchor">voting-dapp with anchor</a><time datetime="2025-08-14T06:47:42.000Z" title="Created 2025-08-14 14:47:42">2025-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/07/ChangeBuffer/" title="MySQL Change Buffer - Boosting Write Performance">MySQL Change Buffer - Boosting Write Performance</a><time datetime="2025-08-07T06:09:07.000Z" title="Created 2025-08-07 14:09:07">2025-08-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/05/bustub-Project-1-buffer/" title="BusTub Project 1 - Buffer Pool Manager Implementation">BusTub Project 1 - Buffer Pool Manager Implementation</a><time datetime="2025-07-05T06:37:55.000Z" title="Created 2025-07-05 14:37:55">2025-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/29/bustub/" title="bustub">bustub</a><time datetime="2025-06-29T06:06:55.000Z" title="Created 2025-06-29 14:06:55">2025-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/16/CGLIB/" title="Understanding Java Proxy Patterns - JDK Dynamic Proxy vs CGLIB">Understanding Java Proxy Patterns - JDK Dynamic Proxy vs CGLIB</a><time datetime="2025-06-16T06:32:40.000Z" title="Created 2025-06-16 14:32:40">2025-06-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By victor holmes</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
